@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Bapak</title>
+    <style>
+        /* --- GAYA DASAR --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif; /* Font serif memberi kesan elegan dan hormat */
+            background-color: #1a1a2e; /* Warna gelap malam */
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Menggunakan min-height agar bisa di-scroll jika pesan panjang */
+            text-align: center;
+            transition: background-color 2.5s ease, color 2.5s ease; /* Efek transisi halus */
+            overflow-x: hidden; /* Mencegah scroll menyamping */
+        }
+
+        /* Class saat mode terang aktif */
+        body.terang {
+            background-color: #fdf6e3; /* Warna krem hangat */
+            color: #333;
+        }
+
+        /* --- HALAMAN AWAL (LILIN) --- */
+        #halaman-awal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Memastikan lilin di tengah layar */
+            transition: opacity 1s ease;
+        }
+
+        .lilin {
+            font-size: 5em;
+            cursor: pointer;
+            transition: transform 0.3s, text-shadow 0.3s;
+            margin: 20px 0;
+        }
+
+        .lilin:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.8); /* Efek cahaya saat disorot */
+        }
+
+        .teks-bantu {
+            font-size: 0.9em;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* --- BAGIAN PESAN UTAMA --- */
+        #pesan-utama {
+            display: none;
+            opacity: 0;
+            max-width: 700px; /* Lebar maksimum pesan sedikit diperbesar */
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #d4af37; /* Warna emas di gelap */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            transition: color 2.5s ease;
+        }
+
+        body.terang h1 {
+            color: #8b5a2b; /* Warna cokelat di terang */
+        }
+
+        /* --- GAYA BARU UNTUK FOTO --- */
+        .bingkai-foto {
+            margin: 20px auto 30px auto;
+            width: 80%;
+            max-width: 350px; /* Batas lebar maksimal foto */
+            border-radius: 15px; /* Sudut melengkung */
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Bayangan agar timbul */
+            border: 5px solid #fff; /* Bingkai putih */
+            
+            /* Animasi awal foto (tersembunyi dan sedikit di bawah) */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.5s ease 0.5s; /* Muncul perlahan dengan jeda 0.5 detik setelah lampu nyala */
+        }
+
+        .bingkai-foto img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Saat mode terang aktif, foto muncul dan naik ke posisi normal */
+        body.terang .bingkai-foto {
+             opacity: 1;
+             transform: translateY(0);
+        }
+
+        /* --- GAYA NARASI --- */
+        p.isi-pesan {
+            font-size: 1.15em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify; /* Teks rata kanan-kiri agar rapi */
+            text-justify: inter-word;
+        }
+        
+        /* Penyesuaian untuk layar HP kecil */
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            p.isi-pesan { font-size: 1em; text-align: left; }
+            .bingkai-foto { max-width: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="musik-latar" src="lagu.mp3" autoplay loop></audio>
+
+    <div id="halaman-awal">
+        <p style="font-size: 1.2em;"><i>"Guru yang hebat tidak memaksakan pandangannya, melainkan mengasah jendela agar muridnya bisa melihat dunia dengan caranya sendiri."</i></p>
+        <div class="lilin" onclick="nyalakanTerang()" title="Klik untuk menyalakan cahaya">🕯️</div>
+        <p class="teks-bantu">(Sentuh lilin di atas untuk menyalakan terang)</p>
+    </div>
+
+    <div id="pesan-utama">
+        <h1>Selamat Ulang Tahun, Bapak!</h1>
+        
+        <div class="bingkai-foto">
+            <img src="gambar.jpeg" alt="Foto Kenangan Bersama Bapak">
+        </div>
+        
+        <p class="isi-pesan">
+            Di hari yang istimewa ini, Anggi ingin mengambil kesempatan untuk mengucapkan lebih dari sekadar selamat ulang tahun.
+        </p>
+        <p class="isi-pesan">
+            Hari ini adalah hari spesial yang memperingati sosok yang menjadi inspirasi bagi banyak orang, termasuk Anggi. 
+        </p>
+        <p class="isi-pesan">
+            Dengan setiap tahun yang berlalu, Bapak terus menunjukkan dedikasi, kebijaksanaan, dan kebaikan hati yang luar biasa.
+        </p>
+        <p class="isi-pesan">
+           Semoga hari ulang tahun ini menjadi permulaan tahun yang penuh prestasi dan kebahagiaan bagi Bapak. 
+        </p>
+        <p class="isi-pesan">
+           Teruslah mengejar impian, menginspirasi orang di sekitar Bapak, dan menciptakan momen-momen tak terlupakan.
+        </p>
+         <p class="isi-pesan">
+           Bapak adalah sosok yang layak dihormati dan dikagumi, walaupun hari ini Anggi tidak dapat merayakan hari istimewa ini bersama Bapak. Semoga setiap langkah Bapak diiringi keberhasilan dan kebahagiaan.
+           </p>
+           <p class="isi-pesan">
+            Sekali lagi selamt ulang tahun bapak!! Sukses selalu dan sampai bertemu di bulan Maret nanti.
+           </p>
+        <br>
+         <p class="isi-pesan">
+          Salam Hangat
+           </p>
+            <p class="isi-pesan">
+          Anggi Thoat A
+           </p>
+    </div>
+
+    <script>
+        // Coba putar musik otomatis saat halaman dimuat
+        window.onload = function() {
+            const musik = document.getElementById('musik-latar');
+            musik.play().catch(function(error) {
+                console.log("Browser memblokir autoplay. Musik akan berputar saat lilin diklik.");
+            });
+        };
+
+        function nyalakanTerang() {
+            const halamanAwal = document.getElementById('halaman-awal');
+            const pesanUtama = document.getElementById('pesan-utama');
+            const musik = document.getElementById('musik-latar'); 
+            
+            // Memastikan musik berputar saat lilin diklik (jika autoplay gagal)
+            if (musik.paused) {
+                musik.play();
+            }
+
+            halamanAwal.style.opacity = '0';
+
+            setTimeout(() => {
+                halamanAwal.style.display = 'none'; 
+                document.body.classList.add('terang'); 
+                pesanUtama.style.display = 'block'; 
+                
+                // Animasi fade-in untuk pesan utama
+                setTimeout(() => {
+                    pesanUtama.style.transition = 'opacity 3s ease';
+                    pesanUtama.style.opacity = '1';
+                }, 100); 
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
